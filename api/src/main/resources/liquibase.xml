@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+
+  <!--<changeSet id="EXAMPLE_201807171438" author="Angshu">-->
+    <!--<preConditions onFail="MARK_RAN">-->
+      <!--<not>-->
+        <!--<tableExists tableName="example_table"/>-->
+      <!--</not>-->
+    <!--</preConditions>-->
+    <!--<createTable tableName="example_table">-->
+      <!--<column name="example_table_id" type="int" autoIncrement="true">-->
+        <!--<constraints primaryKey="true" nullable="false"/>-->
+      <!--</column>-->
+      <!--<column name="example_name" type="varchar(100)">-->
+        <!--<constraints nullable="false"/>-->
+      <!--</column>-->
+    <!--</createTable>-->
+  <!--</changeSet>-->
+
+
+</databaseChangeLog>
