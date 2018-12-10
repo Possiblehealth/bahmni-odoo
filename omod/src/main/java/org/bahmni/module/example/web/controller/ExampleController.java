@@ -2,9 +2,7 @@ package org.bahmni.module.example.web.controller;
 
 
 import org.bahmni.module.example.service.ExampleService;
-import org.openmrs.Order;
-import org.openmrs.Patient;
-import org.openmrs.Visit;
+import org.openmrs.*;
 import org.openmrs.api.PatientService;
 import org.openmrs.api.VisitService;
 import org.openmrs.module.webservices.rest.web.RestConstants;
@@ -15,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 @Controller
@@ -43,7 +42,7 @@ public class ExampleController extends BaseRestController {
 
     Patient patient = patientService.getPatientByUuid(patientUuid);
     if (patient == null) {
-        //throw 404 error
+        throw new RuntimeException("Can not identify Patient.");
     }
 
     List<Visit> activeVisits = visitService.getActiveVisitsByPatient(patient);
@@ -52,15 +51,24 @@ public class ExampleController extends BaseRestController {
       activeVisit.getNonVoidedEncounters().stream().forEach(encounter -> orders.addAll(encounter.getOrders()));
     }
 
-
     List activeOrders = new ArrayList();
+    List<Concept> orderables = orders.stream().map(order -> order.getConcept()).collect(Collectors.toList());
+    Map<Concept, Double> productPriceMap = exampleService.getPriceOfProducts(orderables);
+
     for (Order order : orders) {
         HashMap<String, Object> orderInfo = new HashMap<>();
         orderInfo.put("name", order.getConcept().getName().getName());
         orderInfo.put("date", order.getDateActivated());
         orderInfo.put("uuid", order.getConcept().getUuid());
-        activeOrders.add(orderInfo);
+        orderInfo.put("cost", productPriceMap.get(order.getConcept()));
+        if (order instanceof DrugOrder) {
+            DrugOrder drugOrder = (DrugOrder) order;
+            DosingInstructions dosingInstructions = drugOrder.getDosingInstructionsInstance();
+            //we will ofcourse need to calculate the dose * duration * durationUnits
 
+        }
+        //Double productCost = exampleService.findRelevantProductCost(order.getConcept());
+        activeOrders.add(orderInfo);
     }
 
     return activeOrders;

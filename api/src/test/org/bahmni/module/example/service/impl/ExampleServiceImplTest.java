@@ -1,6 +1,7 @@
 package org.bahmni.module.example.service.impl;
 
 import org.bahmni.module.example.dao.ExampleDao;
+import org.bahmni.module.example.service.OpenERPProductService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,13 +31,16 @@ public class ExampleServiceImplTest {
   @Mock
   private OrderService orderService;
 
+  @Mock
+  private OpenERPProductService erpProductService;
+
   private Patient patient;
   private ExampleServiceImpl exampleService;
 
   @Before
   public void setUp() {
     patient = new Patient();
-    exampleService = new ExampleServiceImpl(exampleDao);
+    exampleService = new ExampleServiceImpl(erpProductService, exampleDao);
   }
 
 
