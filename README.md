@@ -30,3 +30,17 @@ If uploads are not allowed from the web (changable via a runtime property), you 
 into the ~/.OpenMRS/modules folder.  (Where ~/.OpenMRS is assumed to be the Application 
 Data Directory that the running openmrs is currently using.)  After putting the file in there 
 simply restart OpenMRS/tomcat and the module will be loaded and started.
+
+
+Dependencies
+-----------------
+There is a jar file "openerp-java-api-1.5.0.jar" in the common-lib directory. We need to add this jar as a maven dependency.
+To do this run the following command. 
+
+mvn install:install-file \
+   -Dfile=/Users/angshus/bahmni-module-example/common-lib/openerp-java-api-1.5.0.jar \
+   -DgroupId=com.debortoliwines.openerp.api \
+   -DartifactId=openerp-adapter \
+   -Dversion=1.0 \
+   -Dpackaging=jar \
+   -DgeneratePom=true
