@@ -24,7 +24,8 @@ public class OpenERPProductServiceImplTest {
         erpProperties.put("erp.password", "password");
         ExampleProperties.initalize(erpProperties);
         OpenERPProductServiceImpl erpProductService = new OpenERPProductServiceImpl();
-        List<String> productUuids = Arrays.asList("38752a31-5b23-4957-ae0c-ecdbc6b0a489", "6ad082b1-2783-4783-9c11-5cc63cf3a1b0", "ed86eff4-56a2-471f-beb1-f0e50c943d83", "7574c69b-1133-4805-bc31-64635f40c3c0");
+        //List<String> productUuids = Arrays.asList("38752a31-5b23-4957-ae0c-ecdbc6b0a489", "6ad082b1-2783-4783-9c11-5cc63cf3a1b0", "ed86eff4-56a2-471f-beb1-f0e50c943d83", "7574c69b-1133-4805-bc31-64635f40c3c0");
+        List<String> productUuids = Arrays.asList("4ee6f5af-68c6-4a78-a675-a9ebfce1f625");
         Map<String, Double> listPricesForOrderables = erpProductService.getListPricesForOrderables(productUuids);
         System.out.println(listPricesForOrderables);
     }
