@@ -34,7 +34,10 @@ simply restart OpenMRS/tomcat and the module will be loaded and started.
 
 Dependencies
 -----------------
-There is a jar file "openerp-java-api-1.5.0.jar" in the common-lib directory. We need to add this jar as a maven dependency.
+There is a jar file "openerp-java-api-1.5.0.jar" in the common-lib directory. 
+The project is hosted on https://sourceforge.net/projects/openerpjavaapi/   
+
+We need to add this jar as a maven dependency.
 To do this run the following command.
 
 mvn install:install-file \
