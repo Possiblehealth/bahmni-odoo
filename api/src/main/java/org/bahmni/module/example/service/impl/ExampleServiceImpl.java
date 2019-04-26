@@ -22,13 +22,11 @@ public class ExampleServiceImpl implements ExampleService {
 
     private VisitService visitService;
     private OpenERPProductService erpProductService;
-    private ExampleDao exampleDao;
 
     @Autowired
-    public ExampleServiceImpl(VisitService visitService, OpenERPProductService erpProductService, ExampleDao exampleDao) {
+    public ExampleServiceImpl(VisitService visitService, OpenERPProductService erpProductService) {
       this.visitService = visitService;
       this.erpProductService = erpProductService;
-      this.exampleDao = exampleDao;
     }
 
     @Override

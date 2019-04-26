@@ -1,26 +1,27 @@
 package org.bahmni.module.example.service.impl;
 
-import com.debortoliwines.openerp.api.FilterCollection;
-import com.debortoliwines.openerp.api.ObjectAdapter;
-import com.debortoliwines.openerp.api.RowCollection;
-import com.debortoliwines.openerp.api.Session;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.commons.collections.map.HashedMap;
 import org.bahmni.module.example.service.OpenERPProductService;
 import org.bahmni.module.example.utils.ExampleProperties;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.Map;
+import com.abercap.odoo.FilterCollection;
+import com.abercap.odoo.ObjectAdapter;
+import com.abercap.odoo.RowCollection;
+import com.abercap.odoo.Session;
 
 @Component
 public class OpenERPProductServiceImpl implements OpenERPProductService {
 
     //default values
-    private String HOST = "127.0.0.1";
+    private String HOST = "192.168.33.20";
     private int PORT = 8069;
-    private String DATABASE = "openerp";
+    private String DATABASE = "odoo";
     private String USER = "admin";
-    private String PASSWORD = "password";
+    private String PASSWORD = "admin";
 
     private String erpHost() {
         String property = ExampleProperties.getProperty("erp.host");
@@ -76,7 +77,6 @@ public class OpenERPProductServiceImpl implements OpenERPProductService {
         return null;
     }
 
-    @Override
     public Map<String, Double> getListPricesForOrderables(List<String> allOrderableUuids) {
         Session openERPSession = getERPSession();
         Map<String, Double> results = new HashedMap();

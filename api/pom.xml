@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.bahmni.module</groupId>
-    <artifactId>bahmni-example</artifactId>
+    <artifactId>bahmni-odoo</artifactId>
     <version>0.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>example-api</artifactId>
+  <artifactId>bahmni-odoo-api</artifactId>
   <packaging>jar</packaging>
   <name>Bahmni Example Module API</name>
   <description>API project for Bahmni Example Module</description>
@@ -40,11 +40,17 @@
     </dependency>
     <!-- End OpenMRS core -->
 
-    <dependency>
+  <!--   <dependency>
       <groupId>com.debortoliwines.openerp.api</groupId>
       <artifactId>openerp-adapter</artifactId>
       <version>1.0</version>
     </dependency>
+     -->
+    <dependency>
+     <groupId>com.abercap</groupId>
+    <artifactId>odoo-java-api</artifactId>
+    <version>1.1.0.RELEASE</version>
+	</dependency>
 
     <dependency>
       <groupId>org.apache.xmlrpc</groupId>

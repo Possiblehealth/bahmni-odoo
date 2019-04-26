@@ -33,9 +33,8 @@ public class ExampleController extends BaseRestController {
 
   @RequestMapping(method = RequestMethod.GET, value = "/patient/{uuid}", produces = "application/json")
   @ResponseBody
-  public List getDetails(@PathVariable("uuid") String patientUuid,
-                         @RequestParam(value = "startDate", required = false) String startDateString,
-                         @RequestParam(value = "endDate", required = false) String endDateString) throws ParseException {
+  public List getDetails(@PathVariable("uuid") String patientUuid) throws ParseException {
+	  System.out.println("REached here ");
       Patient patient = patientService.getPatientByUuid(patientUuid);
       if (patient == null) {
           throw new RuntimeException("Can not identify Patient");
